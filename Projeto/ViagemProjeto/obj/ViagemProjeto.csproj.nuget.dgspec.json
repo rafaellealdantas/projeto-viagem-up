@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\projeto\\Projeto\\Projeto.csproj": {}
+    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\projeto\\Projeto\\Projeto.csproj": {
+    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\projeto\\Projeto\\Projeto.csproj",
-        "projectName": "Projeto",
-        "projectPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\projeto\\Projeto\\Projeto.csproj",
+        "projectUniqueName": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+        "projectName": "ViagemProjeto",
+        "projectPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
         "packagesPath": "C:\\Users\\chcyt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\projeto\\Projeto\\obj\\",
+        "outputPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chcyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -46,6 +46,16 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
