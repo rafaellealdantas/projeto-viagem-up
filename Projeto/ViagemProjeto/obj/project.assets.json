@@ -2983,19 +2983,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chcyt\\.nuget\\packages\\": {}
+    "C:\\Users\\adrie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+      "projectUniqueName": "C:\\Users\\adrie\\Documents\\GitHub\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
       "projectName": "ViagemProjeto",
-      "projectPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
-      "packagesPath": "C:\\Users\\chcyt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\obj\\",
+      "projectPath": "C:\\Users\\adrie\\Documents\\GitHub\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+      "packagesPath": "C:\\Users\\adrie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\adrie\\Documents\\GitHub\\projeto-viagem-up\\Projeto\\ViagemProjeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\chcyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\adrie\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
