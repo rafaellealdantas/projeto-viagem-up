@@ -1,6 +1,29 @@
-@ViagemProjeto_HostAddress = http://localhost:5281
+# POST http://localhost:5281/api/registro_voo/cadastrar
+# Content-Type: application/json
 
-GET {{ViagemProjeto_HostAddress}}/weatherforecast/
-Accept: application/json
+# {
+#     "NumeroVoo": 122,
+#     "Origem": "Brasil",
+#     "Destino": "Europa",
+#     "HrPartida": "05:00",
+#     "HrChegadaPrevista": "14:30",
+#     "TipoAviao": "Boeing 747-8",
+#     "Companhia": "Azul" 
+# }
 
-###
+#GET http://localhost:5281/api/registro_voo/listar
+
+# PUT http://localhost:5281/api/registro_voo/atualizar/
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 21212121,
+#     "Origem": "Brasil",
+#     "Destino": "Europa",
+#     "HrPartida": "05:00",
+#     "HrChegadaPrevista": "14:30",
+#     "TipoAviao": "Boeing 747-8",
+#     "Companhia": "Az2222ul" 
+# }
+
+#DELETE http://localhost:5281/api/registro_voo/deletar/
