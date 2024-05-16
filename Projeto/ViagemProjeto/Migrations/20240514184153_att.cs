@@ -5,7 +5,7 @@
 namespace ViagemProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class att : Migration
+    public partial class Att : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

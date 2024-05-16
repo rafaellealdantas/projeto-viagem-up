@@ -16,7 +16,7 @@ namespace ViagemProjeto.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("ViagemProjeto.Models.Registro_Tripulacao", b =>
+            modelBuilder.Entity("ViagemProjeto.Models.Tripulacao", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,10 +42,10 @@ namespace ViagemProjeto.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Registro_Tripulacoes");
+                    b.ToTable("Tripulacoes");
                 });
 
-            modelBuilder.Entity("ViagemProjeto.Models.Registro_Voo", b =>
+            modelBuilder.Entity("ViagemProjeto.Models.Voo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,12 +69,18 @@ namespace ViagemProjeto.Migrations
                     b.Property<string>("Origem")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("TemProblema")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("TipoAviao")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("VooCancelado")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Registro_Voos");
+                    b.ToTable("Voos");
                 });
 #pragma warning restore 612, 618
         }
