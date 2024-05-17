@@ -1,0 +1,94 @@
+# POST http://localhost:5281/api/registro_voo/cadastrar
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 122,
+#     "Origem": "Brasil",
+#     "Destino": "Europa",
+#     "HrPartida": "05:00",
+#     "HrChegadaPrevista": "14:30",
+#     "TipoAviao": "Boeing 747-8",
+#     "Companhia": "Azul" 
+# }
+
+#GET http://localhost:5281/api/registro_voo/listar
+
+# PUT http://localhost:5281/api/registro_voo/atualizar/
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": ,
+#     "Origem": "",
+#     "Destino": "",
+#     "HrPartida": ":00",
+#     "HrChegadaPrevista": ":30",
+#     "TipoAviao": "",
+#     "Companhia": "" 
+# }
+
+#DELETE http://localhost:5281/api/registro_voo/deletar/
+
+
+//================================================================================================================
+
+
+# POST http://localhost:5281/api/registro_tripulacao/cadastrar
+# Content-Type: application/json
+
+# {
+#     "Nome": "Adriel",
+#     "Cargo": "Piloto",
+#     "Funcao": "pilotar o aviao",
+#     "Qualificacoes": "PPL, CPL, ATPL, Certificação Médica, Habilitações de Voo, Treinamento de Emergência",
+#     "HorarioTrabalho": "04:30 as 14:00",
+#     "IdiomasFalados": "Portugues, ingles, espanhol"
+# }
+
+
+
+#GET http://localhost:5281/api/registro_tripulacao/listar
+
+
+
+# PUT http://localhost:5281/api/registro_tripulacao/atualizar/1
+# Content-Type: application/json
+
+# {
+#     "Nome": "aaa",
+#     "Cargo": "",
+#     "Funcao": "",
+#     "Qualificacoes": "",
+#     "HorarioTrabalho": "",
+#     "IdiomasFalados": ""
+# }
+
+
+#DELETE http://localhost:5281/api/registro_tripulacao/deletar/1
+
+# POST http://localhost:5281/api/verificacaoclimatica/cadastrar
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 122,
+#     "RotaVoo": "Brasil",
+#     "CondicoesMeteorologicas": "chuva",
+#     "PrevisaoTempo": "05:00",
+#     "AlertasTempestades": "14:30",
+#     "CondicoesAdversas": "Boeing 747-8"
+# }
+
+#GET http://localhost:5281/api/verificacaoclimatica/listar
+
+# PUT http://localhost:5281/api/verificacaoclimatica/atualizar/1
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 133,
+#     "RotaVoo": "Brasil",
+#     "CondicoesMeteorologicas": "chuva",
+#     "PrevisaoTempo": "05:00",
+#     "AlertasTempestades": "14:30",
+#     "CondicoesAdversas": "Boeing 747-8"
+# }
+
+# DELETE http://localhost:5281/api/verificacaoclimatica/deletar/1
