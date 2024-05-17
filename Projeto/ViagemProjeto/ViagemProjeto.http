@@ -64,3 +64,31 @@
 
 
 #DELETE http://localhost:5281/api/registro_tripulacao/deletar/1
+
+# POST http://localhost:5281/api/verificacaoclimatica/cadastrar
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 122,
+#     "RotaVoo": "Brasil",
+#     "CondicoesMeteorologicas": "chuva",
+#     "PrevisaoTempo": "05:00",
+#     "AlertasTempestades": "14:30",
+#     "CondicoesAdversas": "Boeing 747-8"
+# }
+
+#GET http://localhost:5281/api/verificacaoclimatica/listar
+
+# PUT http://localhost:5281/api/verificacaoclimatica/atualizar/1
+# Content-Type: application/json
+
+# {
+#     "NumeroVoo": 133,
+#     "RotaVoo": "Brasil",
+#     "CondicoesMeteorologicas": "chuva",
+#     "PrevisaoTempo": "05:00",
+#     "AlertasTempestades": "14:30",
+#     "CondicoesAdversas": "Boeing 747-8"
+# }
+
+# DELETE http://localhost:5281/api/verificacaoclimatica/deletar/1

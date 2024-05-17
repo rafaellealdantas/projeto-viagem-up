@@ -6,6 +6,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Voo> Voos { get; set; }
     public DbSet<Tripulacao> Tripulacoes { get; set; }
+    public DbSet<VerificacaoClimatica> VerificacoesClimaticas { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
