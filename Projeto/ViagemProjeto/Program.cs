@@ -110,5 +110,53 @@ app.MapDelete("/api/registro_tripulacao/deletar/{id}", (int id, AppDbContext ctx
     return Results.Ok("membro da tripulação removido com sucesso.");
 });
 
+//Verificacao climatica
+app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] VerificacaoClimatica verificacaoClimatica, [FromServices] AppDbContext ctx) =>
+{
+    ctx.VerificacoesClimaticas.Add(verificacaoClimatica);
+    await ctx.SaveChangesAsync();
+    return Results.Created($"/verificacaoclimatica/{verificacaoClimatica.Id}", verificacaoClimatica);
+});
+
+//listar Vericacao climatica
+app.MapGet("/api/verificacaoclimatica/listar", ([FromServices] AppDbContext ctx) =>
+{
+    var VerificacoesClimaticas = ctx.VerificacoesClimaticas.ToList();
+    return Results.Ok(VerificacoesClimaticas);
+});
+
+// Atualizar as verificações climáticas
+app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id, [FromBody] VerificacaoClimatica verificacaoClimaticaAtualizado, [FromServices] AppDbContext ctx) =>
+{
+    var verificacaoClimatica = await ctx.VerificacoesClimaticas.FindAsync(id);
+    if (verificacaoClimatica == null)
+    {
+        return Results.NotFound("Registro não encontrado.");
+    }
+
+    verificacaoClimatica.NumeroVoo = verificacaoClimaticaAtualizado.NumeroVoo != 0 ? verificacaoClimaticaAtualizado.NumeroVoo : verificacaoClimatica.NumeroVoo;
+    verificacaoClimatica.RotaVoo = verificacaoClimaticaAtualizado.RotaVoo ?? verificacaoClimatica.RotaVoo;
+    verificacaoClimatica.CondicoesMeteorologicas = verificacaoClimaticaAtualizado.CondicoesMeteorologicas ?? verificacaoClimatica.CondicoesMeteorologicas;
+    verificacaoClimatica.PrevisaoTempo = verificacaoClimaticaAtualizado.PrevisaoTempo ?? verificacaoClimatica.PrevisaoTempo;
+    verificacaoClimatica.AlertasTempestades = verificacaoClimaticaAtualizado.AlertasTempestades ?? verificacaoClimatica.AlertasTempestades;
+    verificacaoClimatica.CondicoesAdversas = verificacaoClimaticaAtualizado.CondicoesAdversas ?? verificacaoClimatica.CondicoesAdversas;
+
+    await ctx.SaveChangesAsync();
+    return Results.Ok("Registro atualizado com sucesso.");
+});
+
+//Deletar uma verificacao climatica
+app.MapDelete("/api/verificacaoclimatica/deletar/{id}", (int id, AppDbContext ctx) =>
+{
+    var verificacaoclimatica = ctx.VerificacoesClimaticas.Find(id);
+    if (verificacaoclimatica == null)
+    {
+        return Results.NotFound("Verificacao climatica não encontrado.");
+    }
+
+    ctx.VerificacoesClimaticas.Remove(verificacaoclimatica);
+    ctx.SaveChanges();
+    return Results.Ok("Verificacao climatica removida com sucesso.");
+});
 
 app.Run();
