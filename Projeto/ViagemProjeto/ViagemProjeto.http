@@ -103,3 +103,27 @@
 # }
 
 # DELETE http://localhost:5281/api/registro_passageiro/deletar/1
+
+# POST http://localhost:5281/api/carga/cadastrar
+# Content-Type: application/json
+
+# {
+#     "peso": 123.45,
+#     "descricao": "Bagagem para alguem importante",
+#     "cargaPrioritaria": true,
+#     "cargaComercial": false,
+#     "passageiroId": 1
+# }
+
+# GET http://localhost:5281/api/carga/listar
+
+# PUT http://localhost:5281/api/carga/atualizar/1
+
+# {
+#     "peso": 150.00,
+#     "cargaPrioritaria": false,
+#     "passageiroId": 2
+# }
+
+# DELETE http://localhost:5281/api/carga/deletar/1
+

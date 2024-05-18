@@ -229,4 +229,58 @@ app.MapDelete("/api/registro_passageiro/deletar/{id}", async ([FromRoute] int id
     return Results.Ok("Passageiro removido com sucesso.");
 });
 
+app.MapPost("/api/carga/cadastrar", ([FromBody] Carga registroCarga, [FromServices] AppDbContext ctx) =>
+{
+    Passageiro? passageiro = ctx.Passageiros.Find(registroCarga.PassageiroId);
+
+    if (passageiro is null)
+        return Results.NotFound("Voo não encontrado");
+
+    registroCarga.Passageiro = passageiro;
+
+    ctx.Cargas.Add(registroCarga);
+    ctx.SaveChanges();
+    return Results.Created($"/carga/{registroCarga.Id}", registroCarga);
+});
+
+// Listar todos os passageiros
+app.MapGet("/api/carga/listar", ([FromServices] AppDbContext ctx) =>
+{
+    var carga = ctx.Cargas.Include(x => x.Passageiro).ToList();
+    return Results.Ok(carga);
+});
+
+// Atualizar as informações de um passageiro
+app.MapPut("/api/carga/atualizar/{id}", ([FromRoute] int id, [FromBody] Carga cargaAtualizada, [FromServices] AppDbContext ctx) =>
+{
+    var carga = ctx.Cargas.Find(id);
+    if (carga == null)
+    {
+        return Results.NotFound("Carga não encontrada.");
+    }
+
+    carga.Peso = cargaAtualizada.Peso <= 0 ? carga.Peso : cargaAtualizada.Peso;
+    carga.Descricao = cargaAtualizada.Descricao ?? null;
+    carga.CargaPrioritaria = cargaAtualizada.CargaPrioritaria;
+    carga.CargaComercial = cargaAtualizada.CargaComercial;
+    carga.PassageiroId = cargaAtualizada.PassageiroId != 0 ? cargaAtualizada.PassageiroId : carga.PassageiroId;;
+
+    ctx.SaveChanges();
+    return Results.Ok("Carga atualizada com sucesso.");
+});
+
+// Deletar um passageiro
+app.MapDelete("/api/carga/deletar/{id}", async ([FromRoute] int id, [FromServices] AppDbContext ctx) =>
+{
+    var carga = await ctx.Cargas.FindAsync(id);
+    if (carga == null)
+    {
+        return Results.NotFound("Carga não encontrada.");
+    }
+
+    ctx.Cargas.Remove(carga);
+    await ctx.SaveChangesAsync();
+    return Results.Ok("Carga removida com sucesso.");
+});
+
 app.Run();
