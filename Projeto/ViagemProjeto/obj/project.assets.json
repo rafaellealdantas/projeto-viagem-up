@@ -2983,19 +2983,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Vitor PC\\.nuget\\packages\\": {}
+    "C:\\Users\\rafae\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vitor PC\\Desktop\\estudos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+      "projectUniqueName": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
       "projectName": "ViagemProjeto",
-      "projectPath": "C:\\Users\\Vitor PC\\Desktop\\estudos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
-      "packagesPath": "C:\\Users\\Vitor PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vitor PC\\Desktop\\estudos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\obj\\",
+      "projectPath": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+      "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\Projeto\\ViagemProjeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Vitor PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3062,7 +3062,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
