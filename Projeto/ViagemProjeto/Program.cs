@@ -118,7 +118,7 @@ app.MapDelete("/api/registro_tripulacao/deletar/{id}", (int id, AppDbContext ctx
 });
 
 // Verificação climática
-app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] VerificacaoClimatica verificacaoClimatica, [FromServices] AppDbContext ctx) =>
+app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] Clima verificacaoClimatica, [FromServices] AppDbContext ctx) =>
 {
     Voo? voo = ctx.Voos.Find(verificacaoClimatica.VooId);
 
@@ -127,7 +127,7 @@ app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] Verificacao
 
     verificacaoClimatica.Voo = voo;
 
-    ctx.VerificacoesClimaticas.Add(verificacaoClimatica);
+    ctx.Climas.Add(verificacaoClimatica);
     await ctx.SaveChangesAsync();
     return Results.Created($"/verificacaoclimatica/{verificacaoClimatica.Id}", verificacaoClimatica);
 });
@@ -135,14 +135,14 @@ app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] Verificacao
 // Listar Verificação climática
 app.MapGet("/api/verificacaoclimatica/listar", ([FromServices] AppDbContext ctx) =>
 {
-    var VerificacoesClimaticas = ctx.VerificacoesClimaticas.Include(x => x.Voo).ToList();
+    var VerificacoesClimaticas = ctx.Climas.Include(x => x.Voo).ToList();
     return Results.Ok(VerificacoesClimaticas);
 });
 
 // Atualizar as verificações climáticas
-app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id, [FromBody] VerificacaoClimatica verificacaoClimaticaAtualizado, [FromServices] AppDbContext ctx) =>
+app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id, [FromBody] Clima verificacaoClimaticaAtualizado, [FromServices] AppDbContext ctx) =>
 {
-    var verificacaoClimatica = await ctx.VerificacoesClimaticas.FindAsync(id);
+    var verificacaoClimatica = await ctx.Climas.FindAsync(id);
     if (verificacaoClimatica == null)
     {
         return Results.NotFound("Registro não encontrado.");
@@ -161,13 +161,13 @@ app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id
 // Deletar uma verificação climática
 app.MapDelete("/api/verificacaoclimatica/deletar/{id}", (int id, AppDbContext ctx) =>
 {
-    var verificacaoclimatica = ctx.VerificacoesClimaticas.Find(id);
+    var verificacaoclimatica = ctx.Climas.Find(id);
     if (verificacaoclimatica == null)
     {
         return Results.NotFound("Verificação climática não encontrado.");
     }
 
-    ctx.VerificacoesClimaticas.Remove(verificacaoclimatica);
+    ctx.Climas.Remove(verificacaoclimatica);
     ctx.SaveChanges();
     return Results.Ok("Verificação climática removida com sucesso.");
 });

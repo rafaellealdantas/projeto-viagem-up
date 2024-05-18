@@ -1,5 +1,5 @@
 namespace ViagemProjeto.Models;
-public class VerificacaoClimatica
+public class Clima
 {
     public int Id { get; set; }
     public string? CondicoesMeteorologicas { get; set; }
