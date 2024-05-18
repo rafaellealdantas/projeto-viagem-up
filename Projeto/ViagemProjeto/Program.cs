@@ -26,9 +26,7 @@ app.MapPut("/api/registro_voo/atualizar/{id}", ([FromRoute] int id, [FromBody] V
 {
     var registro_voo = ctx.Voos.Find(id);
     if (registro_voo == null)
-    {
         return Results.NotFound("Registro não encontrado.");
-    }
 
     registro_voo.NumeroVoo = registro_vooAtualizado.NumeroVoo != 0 ? registro_vooAtualizado.NumeroVoo : registro_voo.NumeroVoo;
     registro_voo.Destino = registro_vooAtualizado.Destino ?? registro_voo.Destino;
@@ -37,12 +35,14 @@ app.MapPut("/api/registro_voo/atualizar/{id}", ([FromRoute] int id, [FromBody] V
     registro_voo.TipoAviao = registro_vooAtualizado.TipoAviao ?? registro_voo.TipoAviao;
     registro_voo.Companhia = registro_vooAtualizado.Companhia ?? registro_voo.Companhia;
     registro_voo.TemProblema = registro_vooAtualizado.TemProblema;
+
     if (registro_vooAtualizado.TemProblema == true)
     {
         registro_voo.VooCancelado = true;
         ctx.SaveChanges();
         return Results.Ok("Voo cancelado.");
     }
+
     registro_voo.VooCancelado = false;
     ctx.SaveChanges();
     return Results.Ok("Registro atualizado com sucesso.");
@@ -53,9 +53,7 @@ app.MapDelete("/api/registro_voo/deletar/{id}", (int id, AppDbContext ctx) =>
 {
     var registro_voo = ctx.Voos.Find(id);
     if (registro_voo == null)
-    {
         return Results.NotFound("registro_voo não encontrado.");
-    }
 
     ctx.Voos.Remove(registro_voo);
     ctx.SaveChanges();
@@ -65,6 +63,14 @@ app.MapDelete("/api/registro_voo/deletar/{id}", (int id, AppDbContext ctx) =>
 // Cadastrar um novo membro da tripulação
 app.MapPost("/api/registro_tripulacao/cadastrar", ([FromBody] Tripulacao registro_Tripulacao, [FromServices] AppDbContext ctx) =>
 {
+    // Relacionamento da Tribulação com o Voo
+    Voo? voo = ctx.Voos.Find(registro_Tripulacao.VooId);
+
+    if (voo is null)
+        return Results.NotFound("Voo não encontrado");
+
+    registro_Tripulacao.Voo = voo;
+
     ctx.Tripulacoes.Add(registro_Tripulacao);
     ctx.SaveChanges();
     return Results.Created($"/registro_tripulacao/{registro_Tripulacao.Id}", registro_Tripulacao);
@@ -73,7 +79,7 @@ app.MapPost("/api/registro_tripulacao/cadastrar", ([FromBody] Tripulacao registr
 // Listar toda a tripulação
 app.MapGet("/api/registro_tripulacao/listar", ([FromServices] AppDbContext ctx) =>
 {
-    var Tripulacao = ctx.Tripulacoes.ToList();
+    var Tripulacao = ctx.Tripulacoes.Include(x => x.Voo).ToList();
     return Results.Ok(Tripulacao);
 });
 
@@ -92,6 +98,7 @@ app.MapPut("/api/registro_tripulacao/atualizar/{id}", (int id, Tripulacao regist
     registro_tripulacao.Qualificacoes = registro_tripulacaoAtualizado.Qualificacoes ?? registro_tripulacao.Qualificacoes;
     registro_tripulacao.HorarioTrabalho = registro_tripulacaoAtualizado.HorarioTrabalho ?? registro_tripulacao.HorarioTrabalho;
     registro_tripulacao.IdiomasFalados = registro_tripulacaoAtualizado.IdiomasFalados ?? registro_tripulacao.IdiomasFalados;
+    registro_tripulacao.VooId = registro_tripulacaoAtualizado.VooId > 0 ? registro_tripulacaoAtualizado.VooId : registro_tripulacao.VooId;
     ctx.SaveChanges();
     return Results.Ok("Membro da tripulação atualizado com sucesso.");
 });
@@ -113,6 +120,13 @@ app.MapDelete("/api/registro_tripulacao/deletar/{id}", (int id, AppDbContext ctx
 // Verificação climática
 app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] VerificacaoClimatica verificacaoClimatica, [FromServices] AppDbContext ctx) =>
 {
+    Voo? voo = ctx.Voos.Find(verificacaoClimatica.VooId);
+
+    if (voo is null)
+        return Results.NotFound("Voo não encontrado");
+
+    verificacaoClimatica.Voo = voo;
+
     ctx.VerificacoesClimaticas.Add(verificacaoClimatica);
     await ctx.SaveChangesAsync();
     return Results.Created($"/verificacaoclimatica/{verificacaoClimatica.Id}", verificacaoClimatica);
@@ -121,7 +135,7 @@ app.MapPost("/api/verificacaoclimatica/cadastrar", async ([FromBody] Verificacao
 // Listar Verificação climática
 app.MapGet("/api/verificacaoclimatica/listar", ([FromServices] AppDbContext ctx) =>
 {
-    var VerificacoesClimaticas = ctx.VerificacoesClimaticas.ToList();
+    var VerificacoesClimaticas = ctx.VerificacoesClimaticas.Include(x => x.Voo).ToList();
     return Results.Ok(VerificacoesClimaticas);
 });
 
@@ -134,12 +148,11 @@ app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id
         return Results.NotFound("Registro não encontrado.");
     }
 
-    verificacaoClimatica.NumeroVoo = verificacaoClimaticaAtualizado.NumeroVoo != 0 ? verificacaoClimaticaAtualizado.NumeroVoo : verificacaoClimatica.NumeroVoo;
-    verificacaoClimatica.RotaVoo = verificacaoClimaticaAtualizado.RotaVoo ?? verificacaoClimatica.RotaVoo;
     verificacaoClimatica.CondicoesMeteorologicas = verificacaoClimaticaAtualizado.CondicoesMeteorologicas ?? verificacaoClimatica.CondicoesMeteorologicas;
     verificacaoClimatica.PrevisaoTempo = verificacaoClimaticaAtualizado.PrevisaoTempo ?? verificacaoClimatica.PrevisaoTempo;
     verificacaoClimatica.AlertasTempestades = verificacaoClimaticaAtualizado.AlertasTempestades ?? verificacaoClimatica.AlertasTempestades;
     verificacaoClimatica.CondicoesAdversas = verificacaoClimaticaAtualizado.CondicoesAdversas ?? verificacaoClimatica.CondicoesAdversas;
+    verificacaoClimatica.VooId = verificacaoClimaticaAtualizado.VooId > 0 ? verificacaoClimaticaAtualizado.VooId : verificacaoClimatica.VooId;
 
     await ctx.SaveChangesAsync();
     return Results.Ok("Registro atualizado com sucesso.");
@@ -162,6 +175,13 @@ app.MapDelete("/api/verificacaoclimatica/deletar/{id}", (int id, AppDbContext ct
 // Cadastrar um novo passageiro
 app.MapPost("/api/registro_passageiro/cadastrar", async ([FromBody] Passageiro registro_Passageiro, [FromServices] AppDbContext ctx) =>
 {
+    Voo? voo = ctx.Voos.Find(registro_Passageiro.VooId);
+
+    if (voo is null)
+        return Results.NotFound("Voo não encontrado");
+
+    registro_Passageiro.Voo = voo;
+
     ctx.Passageiros.Add(registro_Passageiro);
     await ctx.SaveChangesAsync();
     return Results.Created($"/registro_passageiro/{registro_Passageiro.Id}", registro_Passageiro);
@@ -170,7 +190,7 @@ app.MapPost("/api/registro_passageiro/cadastrar", async ([FromBody] Passageiro r
 // Listar todos os passageiros
 app.MapGet("/api/registro_passageiro/listar", async ([FromServices] AppDbContext ctx) =>
 {
-    var passageiros = await ctx.Passageiros.ToListAsync();
+    var passageiros = await ctx.Passageiros.Include(x => x.Voo).ToListAsync();
     return Results.Ok(passageiros);
 });
 
@@ -188,6 +208,8 @@ app.MapPut("/api/registro_passageiro/atualizar/{id}", async ([FromRoute] int id,
     passageiro.DataNascimento = passageiroAtualizado.DataNascimento != default ? passageiroAtualizado.DataNascimento : passageiro.DataNascimento;
     passageiro.Passaporte = passageiroAtualizado.Passaporte ?? passageiro.Passaporte;
     passageiro.Nacionalidade = passageiroAtualizado.Nacionalidade ?? passageiro.Nacionalidade;
+    passageiro.VooId = passageiroAtualizado.VooId > 0 ? passageiroAtualizado.VooId : passageiro.VooId;
+
 
     await ctx.SaveChangesAsync();
     return Results.Ok("Passageiro atualizado com sucesso.");

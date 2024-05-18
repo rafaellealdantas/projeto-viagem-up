@@ -17,13 +17,13 @@ namespace ViagemProjeto.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.5");
 
-            modelBuilder.Entity("Passageiro", b =>
+            modelBuilder.Entity("ViagemProjeto.Models.Passageiro", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DataNascimento")
+                    b.Property<DateOnly>("DataNascimento")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("InformacoesContato")
@@ -48,7 +48,12 @@ namespace ViagemProjeto.Migrations
                     b.Property<string>("Sobrenome")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("VooId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VooId");
 
                     b.ToTable("Passageiros");
                 });
@@ -77,7 +82,12 @@ namespace ViagemProjeto.Migrations
                     b.Property<string>("Qualificacoes")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("VooId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VooId");
 
                     b.ToTable("Tripulacoes");
                 });
@@ -97,16 +107,15 @@ namespace ViagemProjeto.Migrations
                     b.Property<string>("CondicoesMeteorologicas")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("NumeroVoo")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("PrevisaoTempo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("RotaVoo")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("VooId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("VooId");
 
                     b.ToTable("VerificacoesClimaticas");
                 });
@@ -147,6 +156,39 @@ namespace ViagemProjeto.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Voos");
+                });
+
+            modelBuilder.Entity("ViagemProjeto.Models.Passageiro", b =>
+                {
+                    b.HasOne("ViagemProjeto.Models.Voo", "Voo")
+                        .WithMany()
+                        .HasForeignKey("VooId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Voo");
+                });
+
+            modelBuilder.Entity("ViagemProjeto.Models.Tripulacao", b =>
+                {
+                    b.HasOne("ViagemProjeto.Models.Voo", "Voo")
+                        .WithMany()
+                        .HasForeignKey("VooId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Voo");
+                });
+
+            modelBuilder.Entity("ViagemProjeto.Models.VerificacaoClimatica", b =>
+                {
+                    b.HasOne("ViagemProjeto.Models.Voo", "Voo")
+                        .WithMany()
+                        .HasForeignKey("VooId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Voo");
                 });
 #pragma warning restore 612, 618
         }

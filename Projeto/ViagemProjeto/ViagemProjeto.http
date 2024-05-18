@@ -11,42 +11,39 @@
 #     "Companhia": "Azul" 
 # }
 
-#GET http://localhost:5281/api/registro_voo/listar
+# GET http://localhost:5281/api/registro_voo/listar
 
 # PUT http://localhost:5281/api/registro_voo/atualizar/
 # Content-Type: application/json
 
 # {
-#     "NumeroVoo": ,
-#     "Origem": "",
-#     "Destino": "",
-#     "HrPartida": ":00",
-#     "HrChegadaPrevista": ":30",
-#     "TipoAviao": "",
-#     "Companhia": "" 
+#   "HrPartida": "12:00",
+#   "HrChegadaPrevista": "32:30",
+#   "TemProblema" : true
 # }
 
-#DELETE http://localhost:5281/api/registro_voo/deletar/
+# DELETE http://localhost:5281/api/registro_voo/deletar/
 
 
-//================================================================================================================
+# //================================================================================================================
 
 
 # POST http://localhost:5281/api/registro_tripulacao/cadastrar
 # Content-Type: application/json
 
 # {
-#     "Nome": "Adriel",
-#     "Cargo": "Piloto",
-#     "Funcao": "pilotar o aviao",
-#     "Qualificacoes": "PPL, CPL, ATPL, Certificação Médica, Habilitações de Voo, Treinamento de Emergência",
-#     "HorarioTrabalho": "04:30 as 14:00",
-#     "IdiomasFalados": "Portugues, ingles, espanhol"
+#   "Nome": "Adriel",
+#   "Cargo": "Piloto",
+#   "Funcao": "pilotar o aviao",
+#   "Qualificacoes": "PPL, CPL, ATPL, Certificação Médica, Habilitações de Voo, Treinamento de Emergência",
+#   "HorarioTrabalho": "04:30 as 14:00",
+#   "IdiomasFalados": "Portugues, ingles, espanhol",
+#   "VooId" : 1
 # }
 
 
 
-#GET http://localhost:5281/api/registro_tripulacao/listar
+# GET http://localhost:5281/api/registro_tripulacao/listar
 
 
 
@@ -54,37 +51,29 @@
 # Content-Type: application/json
 
 # {
-#     "Nome": "aaa",
-#     "Cargo": "",
-#     "Funcao": "",
-#     "Qualificacoes": "",
-#     "HorarioTrabalho": "",
-#     "IdiomasFalados": ""
+#     "Nome": "Robin",
 # }
 
 
-#DELETE http://localhost:5281/api/registro_tripulacao/deletar/1
+# DELETE http://localhost:5281/api/registro_tripulacao/deletar/1
 
 # POST http://localhost:5281/api/verificacaoclimatica/cadastrar
 # Content-Type: application/json
 
 # {
-#     "NumeroVoo": 122,
-#     "RotaVoo": "Brasil",
 #     "CondicoesMeteorologicas": "chuva",
 #     "PrevisaoTempo": "05:00",
 #     "AlertasTempestades": "14:30",
-#     "CondicoesAdversas": "Boeing 747-8"
+#     "CondicoesAdversas": "Boeing 747-8",
+#     "vooId" : 1        
 # }
 
-#GET http://localhost:5281/api/verificacaoclimatica/listar
+# GET http://localhost:5281/api/verificacaoclimatica/listar
 
 # PUT http://localhost:5281/api/verificacaoclimatica/atualizar/1
 # Content-Type: application/json
 
 # {
-#     "NumeroVoo": 133,
-#     "RotaVoo": "Brasil",
 #     "CondicoesMeteorologicas": "chuva",
 #     "PrevisaoTempo": "05:00",
 #     "AlertasTempestades": "14:30",
@@ -92,3 +81,25 @@
 # }
 
 # DELETE http://localhost:5281/api/verificacaoclimatica/deletar/1
+
+# GET http://localhost:5281/api/registro_passageiro/listar 
+
+# POST http://localhost:5281/api/registro_passageiro/cadastrar
+# {
+# 	"Nome": "Adriel",
+# 	"Sobrenome": "Roque",
+# 	"NumeroDocumento" : "54312375634",
+# 	"dataNascimento" : "1987-05-23",
+# 	"Nacionalidade": "Alemão",
+# 	"InformacoesContato": "adriel.roque@gmail.com",
+# 	"Passaporte": "RD643123",
+# 	"VooId" : 1
+# }
+
+# PUT http://localhost:5281/api/registro_passageiro/atualizar/1
+
+# {
+# 		"Nacionalidade" : "Brasileiro"
+# }
+
+# DELETE http://localhost:5281/api/registro_passageiro/deletar/1

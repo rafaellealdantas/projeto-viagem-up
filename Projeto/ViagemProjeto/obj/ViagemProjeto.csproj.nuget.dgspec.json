@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\projeto\\ViagemProjeto\\ViagemProjeto.csproj": {}
+    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\projeto\\ViagemProjeto\\ViagemProjeto.csproj": {
+    "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+        "projectUniqueName": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
         "projectName": "ViagemProjeto",
-        "projectPath": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\projeto\\ViagemProjeto\\ViagemProjeto.csproj",
-        "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rafae\\OneDrive\\Área de Trabalho\\projeto-viagem-up-main\\projeto\\ViagemProjeto\\obj\\",
+        "projectPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\ViagemProjeto.csproj",
+        "packagesPath": "C:\\Users\\chcyt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chcyt\\OneDrive\\Documentos\\Códigos\\projeto-viagem-up\\Projeto\\ViagemProjeto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\chcyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
