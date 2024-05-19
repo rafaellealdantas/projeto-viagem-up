@@ -216,16 +216,16 @@ app.MapPut("/api/registro_passageiro/atualizar/{id}", async ([FromRoute] int id,
 });
 
 // Deletar um passageiro
-app.MapDelete("/api/registro_passageiro/deletar/{id}", async ([FromRoute] int id, [FromServices] AppDbContext ctx) =>
+app.MapDelete("/api/registro_passageiro/deletar/{id}", ([FromRoute] int id, [FromServices] AppDbContext ctx) =>
 {
-    var passageiro = await ctx.Passageiros.FindAsync(id);
+    var passageiro = ctx.Passageiros.Find(id);
     if (passageiro == null)
     {
         return Results.NotFound("Passageiro não encontrado.");
     }
 
     ctx.Passageiros.Remove(passageiro);
-    await ctx.SaveChangesAsync();
+    ctx.SaveChanges();
     return Results.Ok("Passageiro removido com sucesso.");
 });
 
