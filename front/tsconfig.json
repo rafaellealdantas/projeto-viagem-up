@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "src/components/pages/voo/voo-listas.tsx" // Add the correct path to the file
   ]
 }

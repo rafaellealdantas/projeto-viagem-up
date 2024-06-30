@@ -1,26 +1,31 @@
-# POST http://localhost:5281/api/registro_voo/cadastrar
-# Content-Type: application/json
 
-# {
-#     "NumeroVoo": 122,
-#     "Origem": "Brasil",
-#     "Destino": "Europa",
-#     "HrPartida": "05:00",
-#     "HrChegadaPrevista": "14:30",
-#     "TipoAviao": "Boeing 747-8",
-#     "Companhia": "Azul" 
-# }
+POST http://localhost:5281/api/registro_voo/cadastrar
+Content-Type: application/json
 
-# GET http://localhost:5281/api/registro_voo/listar
+{
+    "NumeroVoo": 122,
+    "Origem": "Brasil",
+    "Destino": "Europa",
+    "HrPartida": "05:00",
+    "HrChegadaPrevista": "14:30",
+    "TipoAviao": "Boeing 747-8",
+    "Companhia": "Azul" 
+}
 
-# PUT http://localhost:5281/api/registro_voo/atualizar/
-# Content-Type: application/json
+###
 
-# {
-#   "HrPartida": "12:00",
-#   "HrChegadaPrevista": "32:30",
-#   "TemProblema" : true
-# }
+GET http://localhost:5281/api/registro_voo/listar
+
+### 
+
+PUT http://localhost:5281/api/registro_voo/atualizar/1
+Content-Type: application/json
+
+{
+  "HrPartida": "12:00",
+  "HrChegadaPrevista": "32:30",
+  "TemProblema" : true
+}
 
 # DELETE http://localhost:5281/api/registro_voo/deletar/
 
