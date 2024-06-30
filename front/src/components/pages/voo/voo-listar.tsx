@@ -11,7 +11,7 @@ function VooListar() {
 
   function carregarVoos() {
     //FETCH ou AXIOS
-    fetch("http://localhost:5225/api/registro_voo/listar")
+    fetch("http://localhost:5281/api/registro_voo/listar")
       .then((resposta) => resposta.json())
       .then((voo: Voo[]) => {
         console.table(voo);
