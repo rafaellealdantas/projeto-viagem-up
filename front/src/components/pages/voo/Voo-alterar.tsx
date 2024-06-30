@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Voo } from "../../../models/Voo";
 import { useNavigate, useParams } from "react-router-dom";
+import "./styles.css";
 
 function VooAlterar() {
   const navigate = useNavigate();
