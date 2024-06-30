@@ -4,6 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>();
+
+builder.Services.AddCors(options =>
+    options.AddPolicy("Acesso Total",
+        configs => configs
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod())
+);
+
 var app = builder.Build();
 
 // Cadastrar um novo registro de viagem
@@ -283,4 +292,5 @@ app.MapDelete("/api/carga/deletar/{id}", async ([FromRoute] int id, [FromService
     return Results.Ok("Carga removida com sucesso.");
 });
 
+app.UseCors("Acesso Total");
 app.Run();
