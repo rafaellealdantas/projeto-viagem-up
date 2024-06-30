@@ -1,5 +1,5 @@
 export interface Voo {
-    id: number;
+    id?: number;
     numeroVoo: number;
     origem?: string;
     destino?: string;

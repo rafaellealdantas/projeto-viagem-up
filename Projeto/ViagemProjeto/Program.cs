@@ -30,6 +30,20 @@ app.MapGet("/api/registro_voo/listar", ([FromServices] AppDbContext ctx) =>
     return Results.Ok(Voos);
 });
 
+// Buscar voo por id
+app.MapGet("/api/voo/buscar/{id}", ([FromRoute] string id,
+    [FromServices] AppDbContext ctx) =>
+{
+    //Expressão lambda em c#
+    Voo? voo =
+        ctx.Voos.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
+    if (voo is null)
+    {
+        return Results.NotFound("voo não encontrado!");
+    }
+    return Results.Ok(voo);
+});
+
 // Atualizar os registros de voos
 app.MapPut("/api/registro_voo/atualizar/{id}", ([FromRoute] int id, [FromBody] Voo registro_vooAtualizado, [FromServices] AppDbContext ctx) =>
 {
@@ -147,6 +161,8 @@ app.MapGet("/api/verificacaoclimatica/listar", ([FromServices] AppDbContext ctx)
     var VerificacoesClimaticas = ctx.Climas.Include(x => x.Voo).ToList();
     return Results.Ok(VerificacoesClimaticas);
 });
+
+
 
 // Atualizar as verificações climáticas
 app.MapPut("/api/verificacaoclimatica/atualizar/{id}", async ([FromRoute] int id, [FromBody] Clima verificacaoClimaticaAtualizado, [FromServices] AppDbContext ctx) =>

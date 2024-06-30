@@ -19,6 +19,18 @@ function VooListar() {
       });
   }
 
+  function deletar(id: string) {
+    console.log(`Id: ${id}`);
+    fetch(`http://localhost:5281/api/registro_voo/deletar/${id}`, {
+        method: "DELETE",
+    })
+        .then((resposta) => resposta.json())
+        .then((dados) => {
+            console.log(dados);
+            carregarVoos();
+      });
+  }
+
 return (
     <div>
         <h1>Listar Voos</h1>
@@ -35,7 +47,6 @@ return (
                     <th>Companhia</th>
                     <th>Tem Problema</th>
                     <th>Voo Cancelado</th>
-                    <th>Criado Em</th>
                     <th>Deletar</th>
                     <th>Alterar</th>
                 </tr>
@@ -53,20 +64,20 @@ return (
                         <td>{voo.companhia}</td>
                         <td>{voo.temProblema ? "Sim" : "Não"}</td>
                         <td>{voo.vooCancelado ? "Sim" : "Não"}</td>
-                        {/* <td>
+                         <td>
                             <button
                                 onClick={() => {
-                                    deletar(voo.id!);
+                                    deletar(String(voo.id!));
                                 }}
                             >
                                 Deletar
                             </button>
-                        </td> */}
-                        {/* <td>
+                        </td> 
+                         <td>
                             <Link to={`/pages/Voo/alterar/${voo.id}`}>
                                 Alterar
                             </Link>
-                        </td> */}
+                        </td> 
                     </tr>
                 ))}
             </tbody>
